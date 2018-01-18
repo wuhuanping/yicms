@@ -8,8 +8,7 @@ use App\Services\AdminsService;
 use App\Repositories\RolesRepository;
 use App\Http\Requests\Admin\AdminLoginRequest;
 
-class AdminsController extends BaseController
-{
+class AdminsController extends BaseController {
     protected $adminsService;
 
     protected $rolesRepository;
@@ -19,7 +18,7 @@ class AdminsController extends BaseController
      * @param AdminsService $adminsService
      * @param RolesRepository $rolesRepository
      */
-    public function __construct(AdminsService $adminsService,RolesRepository $rolesRepository)
+    public function __construct(AdminsService $adminsService, RolesRepository $rolesRepository)
     {
         $this->adminsService = $adminsService;
 
@@ -70,7 +69,7 @@ class AdminsController extends BaseController
 
         $roles = $this->rolesRepository->getRoles();
 
-        return view('admin.admins.edit', compact('admin','roles'));
+        return view('admin.admins.edit', compact('admin', 'roles'));
     }
 
     /**
@@ -78,9 +77,9 @@ class AdminsController extends BaseController
      * @param $id
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(AdminRequest $request,$id)
+    public function update(AdminRequest $request, $id)
     {
-        $this->adminsService->update($request,$id);
+        $this->adminsService->update($request, $id);
 
         flash('更新资料成功')->success()->important();
 
@@ -95,8 +94,7 @@ class AdminsController extends BaseController
     {
         $admin = $this->adminsService->ById($id);
 
-        if(empty($admin))
-        {
+        if (empty($admin)) {
             flash('删除失败')->error()->important();
 
             return redirect()->route('admins.index');
@@ -118,18 +116,17 @@ class AdminsController extends BaseController
      * @param $id
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function status($status,$id)
+    public function status($status, $id)
     {
         $admin = $this->adminsService->ById($id);
 
-        if(empty($admin))
-        {
+        if (empty($admin)) {
             flash('操作失败')->error()->important();
 
             return redirect()->route('admins.index');
         }
 
-        $admin->update(['status'=>$status]);
+        $admin->update(['status' => $status]);
 
         flash('更新状态成功')->success()->important();
 
@@ -148,14 +145,13 @@ class AdminsController extends BaseController
      */
     public function loginHandle(AdminLoginRequest $request)
     {
-       $result = $this->adminsService->login($request);
+        $result = $this->adminsService->login($request);
 
-        if(!$result)
-        {
-            return viewError('登录失败','login');
+        if ( !$result) {
+            return viewError('登录失败', 'login');
         }
 
-        return viewError('登录成功!','index.index','success');
+        return viewError('登录成功!', 'index.index', 'success');
     }
 
     /**
