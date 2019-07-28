@@ -4,6 +4,16 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * App\Models\Rule
+ *
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Role[] $roles
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Rule newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Rule newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Rule public()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Rule query()
+ * @mixin \Eloquent
+ */
 class Rule extends Model
 {
     protected $fillable = ['name', 'fonts', 'route', 'parent_id', 'is_hidden', 'sort', 'status'];

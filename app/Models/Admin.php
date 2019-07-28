@@ -6,6 +6,16 @@ use App\Models\Traits\RbacCheck;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
+/**
+ * App\Models\Admin
+ *
+ * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Role[] $roles
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Admin newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Admin newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Admin query()
+ * @mixin \Eloquent
+ */
 class Admin extends Authenticatable
 {
     use Notifiable;
