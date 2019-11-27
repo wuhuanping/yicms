@@ -60,9 +60,10 @@ class ActionLogsService
             'address'=> $address[0].$address[1].$address[2],
             'action'=> $action,
         ];
-
+        $datas['admin_id'] = $admin->id;
         $datas['data'] = json_encode($data);
         $datas['type'] = 2;
+
         return $this->actionLogsRepository->create($datas);
     }
 

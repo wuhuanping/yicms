@@ -37,5 +37,8 @@ Route::group(['namespace' => 'Admin','prefix' => 'admin'], function (){
         Route::resource('rules','RulesController',['only'=> ['index','create','store','update','edit','destroy'] ]);  //权限
 
         Route::resource('actions','ActionLogsController',['only'=> ['index','destroy'] ]);  //日志
+        Route::resource('seckill','SeckillController',['only'=> ['index'] ]);  //日志
+        Route::get('seckilltt','SeckillController@start')->name('seckilltt.start');  //日志
+        Route::get('seckilltt/result','SeckillController@result')->name('seckilltt.result');  //日志
     });
 });

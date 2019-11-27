@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Carbon\Carbon;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Schema;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -19,6 +20,7 @@ class AppServiceProvider extends ServiceProvider
         \App\Models\Rule::observe(\App\Observers\RuleObserver::class);
         \App\Models\RoleAuth::observe(\App\Observers\RoleAuthObserver::class);
         Carbon::setLocale('zh');
+        Schema::defaultStringLength(191);
     }
 
     /**
